@@ -11,4 +11,15 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+window.register = function() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  auth.createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      alert("Registration successful: " + userCredential.user.email);
+    })
+    .catch((error) => {
+      alert("Registration failed: " + error.message);
+    });
+}
  
