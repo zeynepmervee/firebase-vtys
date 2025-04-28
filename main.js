@@ -22,4 +22,25 @@ window.register = function() {
       alert("Registration failed: " + error.message);
     });
 }
- 
+
+window.login = function() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  auth.signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      alert("Login successful: " + userCredential.user.email);
+    })
+    .catch((error) => {
+      alert("Login failed: " + error.message);
+    });
+}
+
+window.logout = function() {
+  auth.signOut()
+    .then(() => {
+      alert("Logout successful");
+    })
+    .catch((error) => {
+      alert("Logout failed: " + error.message);
+    });
+}
